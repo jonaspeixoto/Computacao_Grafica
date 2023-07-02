@@ -3,6 +3,7 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 import math
+import random
 
 def init():
     pygame.init()
@@ -60,6 +61,23 @@ def draw_solar_system():
         draw_sphere(radius, 30, 30)
         glPopMatrix()
 
+def draw_stars(stars):
+    glColor3f(1.0, 1.0, 1.0)
+    glPointSize(1.0)
+    glBegin(GL_POINTS)
+    for star in stars:
+        glVertex3f(star[0], star[1], star[2])
+    glEnd()
+
+def generate_stars(num_stars):
+    stars = []
+    for _ in range(num_stars):
+        x = random.uniform(-20, 20)
+        y = random.uniform(-20, 20)
+        z = random.uniform(-20, 20)
+        stars.append((x, y, z))
+    return stars
+
 def handle_key_press():
     rotation_speed = 1.0
 
@@ -78,6 +96,9 @@ def main():
     init()
     clock = pygame.time.Clock()
 
+    num_stars = 1000
+    stars = generate_stars(num_stars)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -88,6 +109,7 @@ def main():
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         draw_solar_system()
+        draw_stars(stars)
         pygame.display.flip()
         clock.tick(60)
 
