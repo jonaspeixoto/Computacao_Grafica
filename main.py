@@ -60,37 +60,6 @@ def draw_solar_system():
         draw_sphere(radius, 30, 30)
         glPopMatrix()
 
-
-def handle_mouse_motion(x, y):
-    mouse_speed = 0.1
-    rotation_speed = 0.1
-    mouse_x, mouse_y = pygame.mouse.get_rel()
-
-    glTranslatef(mouse_x * mouse_speed, -mouse_y * mouse_speed, 0)
-
-    if x < 10:
-        glRotatef(rotation_speed, 0, 1, 0)
-    elif x > 790:
-        glRotatef(-rotation_speed, 0, 1, 0)
-    if y < 10:
-        glRotatef(rotation_speed, 1, 0, 0)
-    elif y > 590:
-        glRotatef(-rotation_speed, 1, 0, 0)    
-
-
-def handle_key_press():
-    rotation_speed = 1.0
-
-    keys = pygame.key.get_pressed()
-
-    if keys[K_LEFT]:
-        glRotatef(rotation_speed, 0, 1, 0)
-    elif keys[K_RIGHT]:
-        glRotatef(-rotation_speed, 0, 1, 0)
-    if keys[K_UP]:
-        glRotate
-
-
 def handle_key_press():
     rotation_speed = 1.0
 
@@ -105,10 +74,8 @@ def handle_key_press():
     elif keys[K_DOWN]:
         glRotatef(-rotation_speed, 1, 0, 0)
 
-
 def main():
     init()
-    rotate_camera = False
     clock = pygame.time.Clock()
 
     while True:
@@ -116,11 +83,8 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        
-        if rotate_camera:
-            handle_mouse_motion(*pygame.mouse.get_pos())
-        handle_key_press()
 
+        handle_key_press()
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         draw_solar_system()
