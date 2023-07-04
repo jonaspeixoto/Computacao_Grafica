@@ -25,6 +25,6 @@ Após a execução do projeto, você poderá interagir com a simulação usando 
 ## Colaboradores
 
 - Eduardo Soares ([GitHub](https://github.com/eduardo1199))
-- Lydon Jonshon ([GitHub](https://github.com/LyndonJonhson))
+- Lyndon Jonhson ([GitHub](https://github.com/LyndonJonhson))
 
 
